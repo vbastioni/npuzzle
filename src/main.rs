@@ -16,8 +16,7 @@ fn from_stdin() -> Result<String, Error> {
 	let stdin = std::io::stdin();
 	let mut handle = stdin.lock();
 	handle.read_to_end(&mut v)?;
-	let s = std::str::from_utf8(&v)?;
-	Ok(s.to_string())
+	Ok(std::str::from_utf8(&v)?.to_string())
 }
 
 fn main() -> Result<(), Error> {
