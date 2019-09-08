@@ -22,11 +22,11 @@ fn from_stdin() -> Result<String, Error> {
 
 fn main() -> Result<(), Error> {
 	let matches = clap_app!(n_puzzle =>
-        (version: VERSION)
+		(version: VERSION)
 		(author: AUTHORS)
-        (about: DESCRIPTION)
-        (@arg file: -f --file +takes_value "Reads puzzle from a file instead of stdin")
-    ).get_matches();
+		(about: DESCRIPTION)
+		(@arg file: -f --file +takes_value "Reads puzzle from a file instead of stdin")
+	).get_matches();
 
 	let c = match matches.value_of("file") {
 		Some(m) => std::fs::read_to_string(m).map_err(Error::from),
