@@ -8,6 +8,10 @@ const AUTHORS: &str = "Vincent B. <vbastion@sutdent.42.fr\nOther P. <opeople@stu
 use std::io::Read;
 
 mod errors;
+mod puzzle;
+
+// TODO: Maybe impl From<&str> for Puzzle
+use puzzle::parse_puzzle;
 
 use errors::Error;
 
@@ -32,6 +36,6 @@ fn main() -> Result<(), Error> {
 		_ => from_stdin(),
 	}?;
 
-	println!("{}", c);
+	parse_puzzle(&c)?;
 	Ok(())
 }
