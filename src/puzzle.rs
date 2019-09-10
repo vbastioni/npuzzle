@@ -9,15 +9,10 @@ fn get_puzzle(v: Vec<Vec<u32>>) -> Result<Puzzle, Error> {
 	let width = v
 		.get(0)
 		.ok_or(Error::ParseError(ParseError::MissingDimension))
-		.and_then(|v| {
-			if v.len() != 1 {
-				Err(Error::ParseError(ParseError::MissingDimension))
-			} else {
-				v
-					.get(0)
-					.ok_or(Error::ParseError(ParseError::MissingDimension))
-			}
-		})?;
+		.and_then(|v| v
+			.get(0)
+			.ok_or(Error::ParseError(ParseError::MissingDimension))
+		)?;
 
 	let rem = v
 		.get(1..)
