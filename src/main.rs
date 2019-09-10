@@ -11,7 +11,7 @@ mod errors;
 mod puzzle;
 
 // TODO: Maybe impl From<&str> for Puzzle
-use puzzle::parse_puzzle;
+use puzzle::Puzzle;
 
 use errors::Error;
 
@@ -36,6 +36,7 @@ fn main() -> Result<(), Error> {
 		_ => from_stdin(),
 	}?;
 
-	parse_puzzle(&c)?;
+	let p = Puzzle::from_str(&c)?;
+	println!("{}", p);
 	Ok(())
 }
