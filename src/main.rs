@@ -9,10 +9,15 @@ use std::io::Read;
 
 mod errors;
 mod puzzle;
+mod parser;
+mod point;
+
+type SVec = Vec<String>;
 
 // TODO: Maybe impl From<&str> for Puzzle
-use puzzle::Puzzle;
+// use puzzle::Puzzle;
 
+use parser::parse;
 use errors::Error;
 
 fn from_stdin() -> Result<String, Error> {
@@ -36,7 +41,7 @@ fn main() -> Result<(), Error> {
 		_ => from_stdin(),
 	}?;
 
-	let p = Puzzle::from_str(&c)?;
+	let p = parse(&c)?;
 	println!("{}", p);
 	Ok(())
 }
