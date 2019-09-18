@@ -1,5 +1,6 @@
 #[macro_use]
 extern crate clap;
+extern crate atty;
 
 const VERSION: &str = "0.1.0";
 const DESCRIPTION: &str = "Does awesome things";

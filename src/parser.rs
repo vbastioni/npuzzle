@@ -74,6 +74,6 @@ fn get_start_and_validate(v: &[u32], width: u32) -> Result<Point, Error> {
 fn map_line(s: &str) -> Result<Vec<u32>, Error> {
 	Ok(s
 		.split(" ")
-		.map(|e| e.parse::<u32>())
+		.filter_map(|e| if e == "" { None } else { Some(e.parse::<u32>()) })
 		.collect::<Result<Vec<_>, std::num::ParseIntError>>()?)
 }
