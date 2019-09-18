@@ -4,6 +4,8 @@ pub enum ParseError {
 	MissingDimension,
 	InvalidDimension,
 	MissingPuzzle,
+	InvalidPuzzle,
+	MissingStart,
 	InvalidNumber(std::num::ParseIntError),
 }
 
@@ -13,6 +15,8 @@ impl ParseError {
 			ParseError::MissingDimension => write!(f, "MissingDimension"),
 			ParseError::InvalidDimension => write!(f, "InvalidDimension"),
 			ParseError::MissingPuzzle => write!(f, "MissingPuzzle"),
+			ParseError::InvalidPuzzle => write!(f, "InvalidPuzzle"),
+			ParseError::MissingStart => write!(f, "MissingStart"),
 			ParseError::InvalidNumber(ref e) => write!(f, "InvalidNumber ({})", e),
 			#[allow(unreachable_patterns)]
 			_ => write!(f, "Generic ParseError"),
